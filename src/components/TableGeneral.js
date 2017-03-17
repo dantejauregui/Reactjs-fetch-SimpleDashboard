@@ -19,43 +19,47 @@ class TableGeneral extends Component{
       })
       .then((data) => {
 				//console.log(data[0].username);
-        this.setState({ usuarios: data[0] })
+        this.setState({ usuarios: data })
       })
   }
 
 
 	render () {
-		console.log(this.state.usuarios);
+		//console.log(this.state.usuarios);
 
-		return <div className="container">
-
+    if (this.state.usuarios.length > 0) {
+      return (
+            <div className="container">
               <div className="row">
-      					<div className="table-responsive">
-      						<table className="table table-bordered">
-      							 <thead>
-      								 <tr>
-      								   <th></th>
-      								   <th></th>
-      								   <th>Name</th>
-	      								 <th>UserName {this.state.usuarios.name}</th>
-      								   <th>Email</th>
-      								   <th>Address</th>
-      								   <th>City</th>
-												 <th>Zip Code</th>
-      								   <th>Website</th>
-      								   <th>Company Name</th>
-      								 </tr>
-      							 </thead>
-      							 <tbody>
+                <div className="table-responsive">
+                  <table className="table table-bordered">
+                     <thead>
+                       <tr>
+                         <th></th>
+                         <th></th>
+                         <th>Name</th>
+                         <th>UserName {this.state.usuarios.name}</th>
+                         <th>Email</th>
+                         <th>Address</th>
+                         <th>City</th>
+                         <th>Zip Code</th>
+                         <th>Website</th>
+                         <th>Company Name</th>
+                       </tr>
+                     </thead>
+                     <tbody>
 
-      							 	<TableDetail dataTest={this.state.usuarios} />
+                      <TableDetail dataTest={this.state.usuarios} />
 
-      							 </tbody>
-        						</table>
-      					</div>
-      			   </div>
-
-           </div>
+                     </tbody>
+                    </table>
+                </div>
+               </div>
+             </div>
+      )
+    } else {
+      return <p className="text-center">Cargando empleados...</p>
+    }
 
 	};
 }
