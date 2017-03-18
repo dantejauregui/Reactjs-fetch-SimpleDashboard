@@ -3,22 +3,30 @@ import React, {Component} from 'react';
 class TableDetail extends Component{
 
 	render () {
-	console.log(this.props.dataTest);
+		console.log(this.props.dataTest);
 
-	return (<tr>
-						<td>PC</td>
-						<td>Venta</td>
-						<td>{this.props.dataTest[0].name}</td>
-						<td>{this.props.dataTest[0].username}</td>
-						<td>{this.props.dataTest[0].email}</td>
-						<td>{this.props.dataTest[0].address.street} {this.props.dataTest[0].address.suite}</td>
-						<td>{this.props.dataTest[0].address.city}</td>
-						<td>{this.props.dataTest[0].address.zipcode}</td>
-						<td>{this.props.dataTest[0].website}</td>
-						<td>{this.props.dataTest[0].company.name}</td>
-		   	</tr>
-			)	
-	};
+		return (
+			<tbody>
+			{this.props.dataTest.map( function (item, i) {
+					return (
+							<tr key={i}>
+								<td>PC</td>
+								<td>Venta</td>
+								<td>{item.name}</td>
+								<td>{item.username}</td>
+								<td>{item.email}</td>
+								<td>{item.address.street} {item.address.suite}</td>
+								<td>{item.address.city}</td>
+								<td>{item.address.zipcode}</td>
+								<td>{item.website}</td>
+								<td>{item.company.name}</td>
+		   				</tr>
+					);
+			})}
+			</tbody>
+		);
+	}
+
 };
 
 // TableDetail.propTypes = {
