@@ -3,7 +3,7 @@ import TableDetail from './TableDetail';
 
 class TableGeneral extends Component{
 
-	constructor(props){
+  constructor(props){
     super(props);
 
     this.state = {
@@ -12,20 +12,20 @@ class TableGeneral extends Component{
   }
 
 
-	componentWillMount() {
+  componentWillMount() {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => {
         return response.json()
       })
       .then((data) => {
-				//console.log(data[0].username);
+        //console.log(data[0].username);
         this.setState({ usuarios: data })
       })
   }
 
 
-	render () {
-		//console.log(this.state.usuarios);
+  render () {
+    //console.log(this.state.usuarios);
 
     if (this.state.usuarios.length > 0) {
       return (
@@ -47,11 +47,10 @@ class TableGeneral extends Component{
                          <th>Company Name</th>
                        </tr>
                      </thead>
-                     <tbody>
+                     
 
                       <TableDetail dataTest={this.state.usuarios} />
 
-                     </tbody>
                     </table>
                 </div>
                </div>
@@ -61,7 +60,7 @@ class TableGeneral extends Component{
       return <p className="text-center">Cargando empleados...</p>
     }
 
-	};
+  };
 }
 
 
